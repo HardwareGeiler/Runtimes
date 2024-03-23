@@ -1,4 +1,4 @@
-**1. Frameworks** (Credits to [Syrusaki](https://github.com/Syrusaki)
+**1. Frameworks** (Credits to [Syrusaki](https://github.com/Syrusaki) )
 
 echo Installing NetFramework 4.81...
 timeout /t 2 >nul
