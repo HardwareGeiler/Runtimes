@@ -78,7 +78,7 @@ rem Set the URL for DirectX installer
 set DX_URL=https://download.microsoft.com/download/1/7/1/1718CCC4-6315-4D8E-9543-8E28A4E18C4C/dxwebsetup.exe
 
 rem Set the URL for Visual C++ Redistributable AIO installer
-set VC_REDIST_URL=https://github.com/abbodi1406/vcredist/releases/download/v0.79.0/VisualCppRedist_AIO_x86_x64.exe
+set VC_REDIST_URL=https://github.com/abbodi1406/vcredist/releases/latest/download/VisualCppRedist_AIO_x86_x64.exe
 
 rem Download DirectX installer
 echo Downloading DirectX installer...
