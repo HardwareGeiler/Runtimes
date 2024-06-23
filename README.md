@@ -7,3 +7,7 @@ Fully Automated Installation of Runtimes needed for Windows
 3. Select your options for Installing
     -running install all is a good idea
 4. Restart and youre good to go!
+
+
+**License:**
+Licensed under the [MIT License](https://github.com/HardwareGeiler/Runtimes/blob/main/LICENSE).
