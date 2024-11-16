@@ -12,6 +12,8 @@ set d=[0m
 set m=[95m
 set u=[4m
 
+
+
 :: Title and Description
 :Menu
 chcp 65001 >nul 2>&1
@@ -54,90 +56,65 @@ exit
 
 :InstallFrameworks
 cls
-:: Check if .NET Framework 4.8.1 is installed
-reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full" /v Version | find "4.8.09032" >nul 2>&1
-if %errorlevel% equ 0 (
-    echo .NET Framework 4.8.1 is already installed.
-) else (
-    echo Installing .NET Framework 4.8.1...
-    powershell -Command "Invoke-WebRequest 'https://download.microsoft.com/download/4/b/2/cd00d4ed-ebdd-49ee-8a33-eabc3d1030e3/NDP481-x86-x64-AllOS-ENU.exe' -OutFile '%temp%\NDP481-x86-x64-AllOS-ENU.exe'"
-    start /wait %temp%\NDP481-x86-x64-AllOS-ENU.exe /Q
-    del /F /Q %temp%\NDP481-x86-x64-AllOS-ENU.exe
-)
 
-
-:: Check if .NET 5.0 is installed
-dotnet --list-runtimes | find "Microsoft.NETCore.App 5.0." >nul
-if %errorlevel% equ 0 (
-    echo .NET 5.0 is already installed.
-) else (
     echo Installing .NET 5.0...
-    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/b6fe5f2a-95f4-46f1-9824-f5994f10bc69/db5ec9b47ec877b5276f83a185fdb6a0/windowsdesktop-runtime-5.0.17-win-x86.exe' -OutFile '%temp%\windowsdesktop-runtime-5.0.17-win-x86.exe'"
-    start /wait %temp%\windowsdesktop-runtime-5.0.17-win-x86.exe /Q
+    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/3789ec90-2717-424f-8b9c-3adbbcea6c16/2085cc5ff077b8789ff938015392e406/aspnetcore-runtime-5.0.17-win-x64.exe' -OutFile '%temp%\windowsdesktop-runtime-5.0.17-win-x64.exe'"
+    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/4bfa247d-321d-4b29-a34b-62320849059b/8df7a17d9aad4044efe9b5b1c423e82c/aspnetcore-runtime-5.0.17-win-x86.exe' -OutFile '%temp%\windowsdesktop-runtime-5.0.17-win-x86.exe'"
+    start /wait %temp%\windowsdesktop-runtime-5.0.17-win-x86.exe /q
+    start /wait %temp%\windowsdesktop-runtime-5.0.17-win-x64.exe /q
     del /F /Q %temp%\windowsdesktop-runtime-5.0.17-win-x86.exe
-)
+    del /F /Q %temp%\windowsdesktop-runtime-5.0.17-win-x64.exe
 
-:: Check if .NET 6.0 is installed
-dotnet --list-runtimes | find "Microsoft.NETCore.App 6.0." >nul
-if %errorlevel% equ 0 (
-    echo .NET 6.0 is already installed.
-) else (
     echo Installing .NET 6.0...
-    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/a9669480-f3e0-42a6-b381-108950dfe290/b54d6613c0fa2839c41d61478926ccb9/windowsdesktop-runtime-6.0.27-win-x86.exe' -OutFile '%temp%\windowsdesktop-runtime-6.0.27-win-x86.exe'"
-    start /wait %temp%\windowsdesktop-runtime-6.0.27-win-x86.exe /Q
-    del /F /Q %temp%\windowsdesktop-runtime-6.0.27-win-x86.exe
-)
+    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/f6b6c5dc-e02d-4738-9559-296e938dabcb/b66d365729359df8e8ea131197715076/windowsdesktop-runtime-6.0.36-win-x64.exe' -OutFile '%temp%\windowsdesktop-runtime-6.0.36-win-x64.exe'"
+    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/cdc314df-4a4c-4709-868d-b974f336f77f/acd5ab7637e456c8a3aa667661324f6d/windowsdesktop-runtime-6.0.36-win-x86.exe' -OutFile '%temp%\windowsdesktop-runtime-6.0.36-win-x86.exe'"
+    start /wait %temp%\windowsdesktop-runtime-6.0.36-win-x86.exe /q
+    start /wait %temp%\windowsdesktop-runtime-6.0.36-win-x64.exe /q
+    del /F /Q %temp%\windowsdesktop-runtime-6.0.36-win-x86.exe
+    del /F /Q %temp%\windowsdesktop-runtime-6.0.36-win-x64.exe
 
-:: Check if .NET 7.0 is installed
-dotnet --list-runtimes | find "Microsoft.NETCore.App 7.0." >nul
-if %errorlevel% equ 0 (
-    echo .NET 7.0 is already installed.
-) else (
     echo Installing .NET 7.0...
-    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/ff4b13ba-07aa-4aa7-b5ae-9111c363c802/5fdedee9a9fae645bfdda3a8930c923d/windowsdesktop-runtime-7.0.16-win-x86.exe' -OutFile '%temp%\windowsdesktop-runtime-7.0.16-win-x86.exe'"
-    start /wait %temp%\windowsdesktop-runtime-7.0.16-win-x86.exe /Q
-    del /F /Q %temp%\windowsdesktop-runtime-7.0.16-win-x86.exe
-)
+    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/08bbfe8f-812d-479f-803b-23ea0bffce47/c320e4b037f3e92ab7ea92c3d7ea3ca1/windowsdesktop-runtime-7.0.20-win-x64.exe' -OutFile '%temp%\windowsdesktop-runtime-7.0.20-win-x64.exe'"
+    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/b840017b-c69f-4724-a152-11020a0039e6/b74aa12e4ee765a3387a7dcd4ba56187/windowsdesktop-runtime-7.0.20-win-x86.exe' -OutFile '%temp%\windowsdesktop-runtime-7.0.20-win-x86.exe'"
+    start /wait %temp%\windowsdesktop-runtime-7.0.20-win-x86.exe /q
+    start /wait %temp%\windowsdesktop-runtime-7.0.20-win-x64.exe /q
+    del /F /Q %temp%\windowsdesktop-runtime-7.0.20-win-x86.exe
+    del /F /Q %temp%\windowsdesktop-runtime-7.0.20-win-x64.exe
 
-:: Check if .NET 8.0 is installed
-dotnet --list-runtimes | find "Microsoft.NETCore.App 8.0." >nul
-if %errorlevel% equ 0 (
-    echo .NET 8.0 is already installed.
-	pause
-) else (
     echo Installing .NET 8.0...
-    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/9b77b480-7e32-4321-b417-a41e0f8ea952/3922bbf5538277b1d41e9b49ee443673/windowsdesktop-runtime-8.0.2-win-x86.exe' -OutFile '%temp%\windowsdesktop-runtime-8.0.2-win-x86.exe'"
-    start /wait %temp%\windowsdesktop-runtime-8.0.2-win-x86.exe /Q
-    del /F /Q %temp%\windowsdesktop-runtime-8.0.2-win-x86.exe
-)
+    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/27bcdd70-ce64-4049-ba24-2b14f9267729/d4a435e55182ce5424a7204c2cf2b3ea/windowsdesktop-runtime-8.0.11-win-x64.exe' -OutFile '%temp%\windowsdesktop-runtime-8.0.11-win-x86.exe'"
+    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/6e1f5faf-ee7d-4db0-9111-9e270a458342/4cdcd1af2d6914134308630f048fbdfc/windowsdesktop-runtime-8.0.11-win-x86.exe' -OutFile '%temp%\windowsdesktop-runtime-8.0.11-win-x64.exe'"
+    start /wait %temp%\windowsdesktop-runtime-8.0.11-win-x86.exe /q
+    start /wait %temp%\windowsdesktop-runtime-8.0.11-win-x64.exe /q
+    del /F /Q %temp%\windowsdesktop-runtime-8.0.11-win-x86.exe
+    del /F /Q %temp%\windowsdesktop-runtime-8.0.11-win-x64.exe
 
-echo .NET Frameworks and .NET versions installed successfully.
+	echo Installing .NET 9.0...
+    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/685792b6-4827-4dca-a971-bce5d7905170/1bf61b02151bc56e763dc711e45f0e1e/windowsdesktop-runtime-9.0.0-win-x64.exe' -OutFile '%temp%\windowsdesktop-runtime-9.0.0-win-x86.exe'"
+    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/8dfbde7b-c316-418d-934a-d3246253f342/69c6a35b77a4f01b95588e1df2bddf9a/windowsdesktop-runtime-9.0.0-win-x86.exe' -OutFile '%temp%\windowsdesktop-runtime-9.0.0-win-x64.exe'"
+    start /wait %temp%\windowsdesktop-runtime-9.0.0-win-x86.exe /q
+    start /wait %temp%\windowsdesktop-runtime-9.0.0-win-x64.exe /q
+    del /F /Q %temp%\windowsdesktop-runtime-9.0.0-win-x86.exe
+    del /F /Q %temp%\windowsdesktop-runtime-9.0.0-win-x64.exe
+	
 goto Menu
 
 :InstallVC
 cls
-reg query HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall /s /f "Microsoft Visual C++" > nul 2>&1
-if %errorlevel% == 0 (
-    echo Visual C++ Redistributable is already installed.
-) else (
+
     echo Installing Visual C++ Redistributable...
     powershell -Command "Invoke-WebRequest 'https://kutt.it/vcpp' -OutFile '%temp%\vc_redist.x64.exe'"
-    start /wait %temp%\vc_redist.x64.exe /ai /gm2
-)
+    start /wait %temp%\vc_redist.x64.exe /aiA /gm2
+
 echo Visual C++ Redistributable installed successfully.
 pause
 goto Menu
 
 :InstallDirectX
 cls
-:: Check if DirectX is installed
-if exist "%windir%\System32\dxdiag.exe" (
-    echo DirectX is already installed.
-) else (
-    echo Installing DirectX...
-    powershell -Command "Invoke-WebRequest 'https://download.microsoft.com/download/1/7/1/1718CCC4-6315-4D8E-9543-8E28A4E18C4C/dxwebsetup.exe' -OutFile '%temp%\dxwebsetup.exe'"
-    start /wait %temp%\dxwebsetup.exe /silent
-)
+echo Installing DirectX...
+powershell -Command "Invoke-WebRequest 'https://download.microsoft.com/download/1/7/1/1718CCC4-6315-4D8E-9543-8E28A4E18C4C/dxwebsetup.exe' -OutFile '%temp%\dxwebsetup.exe'"
+start /wait %temp%\dxwebsetup.exe /Q
 echo DirectX installed successfully.
 pause
 goto Menu
@@ -145,10 +122,61 @@ goto Menu
 :InstallAll
 cls
 echo Installing all components...
-call :InstallFrameworks
-call :InstallVC
-call :InstallDirectX
-echo All components installed successfully.
+echo InstallFrameworks
+
+    echo Installing .NET 5.0...
+    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/3789ec90-2717-424f-8b9c-3adbbcea6c16/2085cc5ff077b8789ff938015392e406/aspnetcore-runtime-5.0.17-win-x64.exe' -OutFile '%temp%\windowsdesktop-runtime-5.0.17-win-x64.exe'"
+    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/4bfa247d-321d-4b29-a34b-62320849059b/8df7a17d9aad4044efe9b5b1c423e82c/aspnetcore-runtime-5.0.17-win-x86.exe' -OutFile '%temp%\windowsdesktop-runtime-5.0.17-win-x86.exe'"
+    start /wait %temp%\windowsdesktop-runtime-5.0.17-win-x86.exe /q
+    start /wait %temp%\windowsdesktop-runtime-5.0.17-win-x64.exe /q
+    del /F /Q %temp%\windowsdesktop-runtime-5.0.17-win-x86.exe
+    del /F /Q %temp%\windowsdesktop-runtime-5.0.17-win-x64.exe
+
+    echo Installing .NET 6.0...
+    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/f6b6c5dc-e02d-4738-9559-296e938dabcb/b66d365729359df8e8ea131197715076/windowsdesktop-runtime-6.0.36-win-x64.exe' -OutFile '%temp%\windowsdesktop-runtime-6.0.36-win-x64.exe'"
+    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/cdc314df-4a4c-4709-868d-b974f336f77f/acd5ab7637e456c8a3aa667661324f6d/windowsdesktop-runtime-6.0.36-win-x86.exe' -OutFile '%temp%\windowsdesktop-runtime-6.0.36-win-x86.exe'"
+    start /wait %temp%\windowsdesktop-runtime-6.0.36-win-x86.exe /q
+    start /wait %temp%\windowsdesktop-runtime-6.0.36-win-x64.exe /q
+    del /F /Q %temp%\windowsdesktop-runtime-6.0.36-win-x86.exe
+    del /F /Q %temp%\windowsdesktop-runtime-6.0.36-win-x64.exe
+
+    echo Installing .NET 7.0...
+    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/08bbfe8f-812d-479f-803b-23ea0bffce47/c320e4b037f3e92ab7ea92c3d7ea3ca1/windowsdesktop-runtime-7.0.20-win-x64.exe' -OutFile '%temp%\windowsdesktop-runtime-7.0.20-win-x64.exe'"
+    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/b840017b-c69f-4724-a152-11020a0039e6/b74aa12e4ee765a3387a7dcd4ba56187/windowsdesktop-runtime-7.0.20-win-x86.exe' -OutFile '%temp%\windowsdesktop-runtime-7.0.20-win-x64.exe'"
+    start /wait %temp%\windowsdesktop-runtime-7.0.20-win-x86.exe /q
+    start /wait %temp%\windowsdesktop-runtime-7.0.20-win-x64.exe /q
+    del /F /Q %temp%\windowsdesktop-runtime-7.0.20-win-x86.exe
+    del /F /Q %temp%\windowsdesktop-runtime-7.0.20-win-x64.exe
+
+    echo Installing .NET 8.0...
+    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/27bcdd70-ce64-4049-ba24-2b14f9267729/d4a435e55182ce5424a7204c2cf2b3ea/windowsdesktop-runtime-8.0.11-win-x64.exe' -OutFile '%temp%\windowsdesktop-runtime-8.0.11-win-x86.exe'"
+    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/6e1f5faf-ee7d-4db0-9111-9e270a458342/4cdcd1af2d6914134308630f048fbdfc/windowsdesktop-runtime-8.0.11-win-x86.exe' -OutFile '%temp%\windowsdesktop-runtime-8.0.11-win-x64.exe'"
+    start /wait %temp%\windowsdesktop-runtime-8.0.11-win-x86.exe /q
+    start /wait %temp%\windowsdesktop-runtime-8.0.11-win-x64.exe /q
+    del /F /Q %temp%\windowsdesktop-runtime-8.0.11-win-x86.exe
+    del /F /Q %temp%\windowsdesktop-runtime-8.0.11-win-x64.exe
+
+	echo Installing .NET 9.0...
+    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/685792b6-4827-4dca-a971-bce5d7905170/1bf61b02151bc56e763dc711e45f0e1e/windowsdesktop-runtime-9.0.0-win-x64.exe' -OutFile '%temp%\windowsdesktop-runtime-9.0.0-win-x86.exe'"
+    powershell -Command "Invoke-WebRequest 'https://download.visualstudio.microsoft.com/download/pr/8dfbde7b-c316-418d-934a-d3246253f342/69c6a35b77a4f01b95588e1df2bddf9a/windowsdesktop-runtime-9.0.0-win-x86.exe' -OutFile '%temp%\windowsdesktop-runtime-9.0.0-win-x64.exe'"
+    start /wait %temp%\windowsdesktop-runtime-9.0.0-win-x86.exe /q
+    start /wait %temp%\windowsdesktop-runtime-9.0.0-win-x64.exe /q
+    del /F /Q %temp%\windowsdesktop-runtime-9.0.0-win-x86.exe
+    del /F /Q %temp%\windowsdesktop-runtime-9.0.0-win-x64.exe
+
+echo InstallVC
+
+  echo Installing Visual C++ Redistributable...
+    powershell -Command "Invoke-WebRequest 'https://kutt.it/vcpp' -OutFile '%temp%\vc_redist.x64.exe'"
+    start /wait %temp%\vc_redist.x64.exe /aiA /gm2
+
+echo InstallDirectX
+
+echo Installing DirectX...
+powershell -Command "Invoke-WebRequest 'https://download.microsoft.com/download/1/7/1/1718CCC4-6315-4D8E-9543-8E28A4E18C4C/dxwebsetup.exe' -OutFile '%temp%\dxwebsetup.exe'"
+start /wait %temp%\dxwebsetup.exe /Q
+
+pause
 goto Menu
 
 :Information
@@ -213,18 +241,6 @@ goto Information
 cls
 echo Returning to main menu...
 goto Menu
-
-:AlrInstalled
-cls
-echo This is already installed.
-pause
-goto Menu
-
-:End
-echo =======================================
-echo Installation process completed.
-pause
-exit
 
 :Exit
 exit
